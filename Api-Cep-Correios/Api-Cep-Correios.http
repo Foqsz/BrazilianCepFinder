@@ -1,0 +1,6 @@
+@Api_Cep_Correios_HostAddress = http://localhost:5053
+
+GET {{Api_Cep_Correios_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
