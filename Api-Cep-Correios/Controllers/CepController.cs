@@ -24,7 +24,7 @@ public class CepController : ControllerBase
 
         if (checkCep is null)
         {
-            return StatusCode(StatusCodes.Status404NotFound, "CEP Não localizado");
+            return StatusCode(StatusCodes.Status404NotFound, "CEP Não localizado. Tente novamente.");
         } 
         return StatusCode(StatusCodes.Status200OK, checkCep);
 
