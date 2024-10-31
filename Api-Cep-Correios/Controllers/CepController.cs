@@ -1,4 +1,5 @@
-﻿using Api_Cep_Correios.Services.Interfaces;
+﻿using Api_Cep_Correios.Model;
+using Api_Cep_Correios.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -10,17 +11,17 @@ namespace Api_Cep_Correios.Controllers;
 [ApiController]
 public class CepController : ControllerBase
 {
-    private readonly IBuscaCepService _buscaCepService;
-
-    public CepController(IBuscaCepService buscaCepService)
+    private readonly IBuscaCepIntegracao _buscaCepService;
+      
+    public CepController(IBuscaCepIntegracao buscaCepService)
     {
         _buscaCepService = buscaCepService;
     }
 
     [HttpGet]
-    public async Task <ActionResult> GetCheckCep(string cep)
+    public async Task <ActionResult<CepResponse>> GetCheckCep(string cep)
     {
-        var checkCep = await _buscaCepService.CheckCep(cep);
+        var checkCep = await _buscaCepService.GetBuscaCep(cep);
 
         if (checkCep is null)
         {

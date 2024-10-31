@@ -1,6 +1,6 @@
 ﻿namespace Api_Cep_Correios.Model;
 
-public class CepModel
+public class CepResponse
 {
     public string? Cep {  get; set; }
     public string? Logradouro { get; set; }

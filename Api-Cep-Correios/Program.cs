@@ -1,6 +1,8 @@
 using Api_Cep_Correios.Controllers;
 using Api_Cep_Correios.Services;
 using Api_Cep_Correios.Services.Interfaces;
+using Api_Cep_Correios.Services.Refit;
+using Refit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +12,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+ 
+builder.Services.AddScoped<IBuscaCepIntegracao, BuscaCepIntegracacao>();
 
-builder.Services.AddHttpClient();
-builder.Services.AddScoped<IBuscaCepService, BuscaCepService>();
+builder.Services.AddRefitClient<IBuscaCepIntegracaoRefit>().ConfigureHttpClient(c =>
+{
+    c.BaseAddress = new Uri("https://viacep.com.br/ws/");
+});
 
-builder.Services.AddScoped<CepController>();
 
 var app = builder.Build();
 
