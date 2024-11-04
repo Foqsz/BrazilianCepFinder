@@ -17,8 +17,8 @@ builder.Services.AddSwaggerGen(c =>
         c.SwaggerDoc("v1", new OpenApiInfo()
         {
             Version = "v1",
-            Title = "LibraryWebApi",
-            Description = "Api de Gerenciamento de Biblioteca",
+            Title = "BuscaCepAPI",
+            Description = "Api de Busca via CEP",
             TermsOfService = new Uri("https://foqsz.github.io/"),
             Contact = new OpenApiContact
             {
